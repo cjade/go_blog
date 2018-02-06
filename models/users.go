@@ -1,10 +1,9 @@
 package models
 
 import (
-	"encoding/hex"
 	"time"
 
-	"crypto/md5"
+	"blog/helpers"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -37,13 +36,10 @@ func GetUserByEmail(email string) (u Users) {
 }
 
 func CreateUser(data Users) (int64, error) {
-	h := md5.New()
-	h.Write([]byte(string(data.Password)))
-	mdPassword := h.Sum(nil)
 	user := new(Users)
 	user.Name = data.Name
 	user.Email = data.Email
-	user.Password = hex.EncodeToString(mdPassword)
+	user.Password = helpers.GetMd5(data.Password)
 	user.Status = 1
 
 	id, err := orm.NewOrm().Insert(user)
