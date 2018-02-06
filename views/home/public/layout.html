@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="PJ Blog,blog,pigjian,laravel,vuejs">
+    <meta name="description" content="Nothing is impossible in PJ Blog">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="TMIQ9XR1zb16aEaf2Ee89HES5dJHGyTyd6CF22xE">
+
+    <link rel="shortcut icon" href="/static/home/images/favicon.ico">
+
+    <title>{{.PageTitle}}</title>
+
+    <link rel="stylesheet" href="/static/home/css/home.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Scripts -->
+
+
+</head>
+<body>
+<div id="app">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="/">
+                    <img src="/static/home/images/logo-w.png" alt="Powered By Jiajian Chan" class="logo">
+                    PJ Blog
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li><a href="article.html">文章</a></li>
+                    <li><a href="discussion.html">讨论</a></li>
+                    <li><a href="share.html">分享</a></li>
+                    <li><a href="https://manual.pigjian.com" target="_blank">文档</a></li>
+                    <li><a href="donate.html">打赏</a></li>
+                    <li><a href="http://example.pigjian.com">例子</a></li>
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Search Box -->
+                    <li>
+                        <form class="navbar-form navbar-right search" role="search" method="get" action="search.html">
+                            <input type="text" class="form-control" name="q" placeholder="搜索" required>
+                        </form>
+                    </li>
+
+                    <!-- Authentication Links -->
+                    {{if .IsLogin}}
+                        <li class="notification"><a href="https://pigjian.com/user/notification"><i
+                                class="ion-android-notifications"><span class="new"></span></i></a></li>
+                        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            cJason
+                            <b class="caret"></b>&nbsp;&nbsp;
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAD/CAIAAACxapedAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC+0lEQVR4nO3WUY3DMBRFwc1qAQZKIBhCoATiEkgr9etFPTMIrqxjy9txrZ+nOvc1PeGGE/vUY0/sd3oAjFE/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XdtxrekNMGObHvCSa/lNzn1NT7jh50OX+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp2s7rjW9AWb8TQ9459zX9IQbT34vnNhH/HzoUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rp2o5rTW+AGd5+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRP1z8aNBd8IKUszQAAAABJRU5ErkJggg=="
+                                 class="avatar img-circle"></a>
+                            <ul role="menu" class="dropdown-menu text-center">
+                                <li><a href="https://pigjian.com/user/cJason"><i class="ion-person"></i>个人中心</a></li>
+                                <li><a href="https://pigjian.com/setting"><i class="ion-gear-b"></i>个人设置</a></li>
+                                <li class="divider"></li>
+                                <li><a href="https://pigjian.com/logout" onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();"><i
+                                        class="ion-log-out"></i>退出
+                                </a>
+                                    <form id="logout-form" action="https://pigjian.com/logout" method="POST"
+                                          style="display: none;"><input type="hidden" name="_token"
+                                                                        value="hM8ckqdMX5xjjVREiBvscxB6yUBb1WE4tCHFv4ma">
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    {{else}}
+                        <li><a href="/login">登录</a></li>
+                        <li><a href="/register">注册</a></li>
+                    {{end}}
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+    {{.Banner}}
+
+
+    {{.LayoutContent}}
+
+        <div class="text-center">
+            <div class="pagination pagination-minimal">
+                <ul>
+
+                    <li class="previous disabled"><span><i class="ion-chevron-left"></i></span></li>
+
+
+                    <li class="active"><span>1</span></li>
+                    <li><a href="article-page=2.html">2</a></li>
+                    <li><a href="article-page=3.html">3</a></li>
+
+
+                    <li class="next"><a href="article-page=2.html" rel="next"><i class="ion-chevron-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer id="footer" class="footer">
+        <div class="container text-center">
+            <div class="row content">
+                <div class="col-md-4 col-md-offset-4">
+                    <ul class="connect">
+                        <li>
+                            <a href="index.html">
+                                <i class="large ion-ios-home"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/jcc" target="_blank">
+                                <i class="large ion-social-github icon"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/pigjian" target="_blank">
+                                <i class="large ion-social-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="links">
+                        <a href="link.html">友情链接</a>
+                        <a href="about.html">关于我</a>
+                    </div>
+                    <div class="sponsors">
+                        <div class="title">CDN 支持</div>
+                        <a href="https://www.upyun.com/"><img width="150" src="storage/logo/upyun-white.png"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right text-center">
+            <span>© Pig Jian 2016. All rights reserved. </span><a class="item" target="_blank"
+                                                                  href="http://www.miitbeian.gov.cn/">粤ICP备16020344号-1</a>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="/static/home/js/home.js"></script>
+
+
+<script>
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-81634754-1', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>
