@@ -27,9 +27,17 @@ func (c *LoginController) DoLogin() {
 }
 
 func (c *LoginController) Register() {
+	//flash 数据
+	flash := beego.ReadFromRequest(&c.Controller)
+
 	c.Data["PageTitle"] = "注册"
 	c.Layout = "home/public/layout.html"
 	c.TplName = "home/register.html"
+	if _, ok := flash.Data["error"]; ok {
+		// 显示设置成功
+		c.LayoutSections = make(map[string]string)
+		c.LayoutSections["Noty"] = "home/public/_toastr_error.html"
+	}
 }
 
 func (c *LoginController) DoRegister() {
@@ -71,6 +79,7 @@ func (c *LoginController) DoRegister() {
 	data.Password = password
 	_, err := models.CreateUser(data)
 	if err == nil {
+		c.SetSession("user", models.GetUserByEmail(email))
 		c.Redirect("/", 301)
 	} else {
 		c.Data["json"] = map[string]interface{}{"code": -1, "message": "添加出错"}
