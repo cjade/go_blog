@@ -5,23 +5,48 @@ import (
 
 	"blog/models"
 
+	"blog/helpers"
+
 	"github.com/astaxie/beego"
 )
 
 type LoginController struct {
-	beego.Controller
+	BaseController
 }
 
 func (c *LoginController) Login() {
+	//flash 数据
+	flash := beego.ReadFromRequest(&c.Controller)
+
 	c.Data["PageTitle"] = "登录"
 	c.Layout = "home/public/layout.html"
 	c.TplName = "home/login.html"
+	if _, ok := flash.Data["error"]; ok {
+		// 显示设置成功
+		c.LayoutSections = make(map[string]string)
+		c.LayoutSections["Noty"] = "home/public/_toastr_error.html"
+	}
 }
 
 func (c *LoginController) DoLogin() {
 	email := c.Input().Get("email")
 	password := c.Input().Get("password")
-	c.Ctx.WriteString(fmt.Sprint(email, password))
+	users := models.GetUserByEmail(email)
+	flash := beego.NewFlash()
+	if users.Email == "" {
+		flash.Error("账号或密码错误")
+		flash.Store(&c.Controller)
+		c.Redirect("/login", 302)
+	}
+
+	if users.Password != helpers.GetMd5(password) {
+		flash.Error("账号或密码错误")
+		flash.Store(&c.Controller)
+		c.Redirect("/login", 302)
+	}
+
+	c.SetSession("user", users)
+	c.Redirect("/", 301)
 
 	return
 }
@@ -82,7 +107,10 @@ func (c *LoginController) DoRegister() {
 		c.SetSession("user", models.GetUserByEmail(email))
 		c.Redirect("/", 301)
 	} else {
-		c.Data["json"] = map[string]interface{}{"code": -1, "message": "添加出错"}
-		c.ServeJSON()
+		flash.Error("注册失败")
+		flash.Store(&c.Controller)
+		c.Redirect("/register", 302)
+
+		return
 	}
 }
