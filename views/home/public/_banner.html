@@ -1,11 +1,30 @@
     <div class="container-fluid">
         <div class="jumbotron text-center">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <h3>Nothing is impossible.</h3>
+                {{if .IsIndex}}
+                    <div class="col-md-10 col-md-offset-1">
+                        <h3>Nothing is impossible.</h3>
 
-                    <h6>https://pigjian.com</h6>
-                </div>
+                        <h6>https://pigjian.com</h6>
+                    </div>
+                {{else}}
+                    <div class="col-md-10 col-md-offset-1">
+                        <h4>Laravel 5.5 发布，PJ Blog 升级 &amp; Yike 项目介绍！</h4>
+
+                        <h6>Upgrade PJ Blog and introduct the project of Yike</h6>
+
+                        <div class="header">
+                            <i class="ion-person"></i>Jiajian，
+                            <i class="ion-pricetag"></i>
+                            <a href="../tag/%E5%85%A5%E9%97%A8.html">入门</a>，
+                            <a href="../tag/Laravel.html">Laravel</a>，
+                            <a href="../tag/PHP7.html">PHP7</a>，
+                            <a href="../tag/Vuejs.html">Vuejs</a>，
+                            <a href="../tag/overtrue.html">overtrue</a>，
+                            <i class="ion-clock"></i>4个月前
+                        </div>
+                    </div>
+                {{end}}
             </div>
         </div>
     </div>

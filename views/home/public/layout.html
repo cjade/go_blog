@@ -78,10 +78,10 @@
                                 <li><a href="https://pigjian.com/user/cJason"><i class="ion-person"></i>个人中心</a></li>
                                 <li><a href="https://pigjian.com/setting"><i class="ion-gear-b"></i>个人设置</a></li>
                                 <li class="divider"></li>
-                                <li><a href="/logout"><i
-                                        class="ion-log-out"></i>退出
-                                </a>
-                                </li>
+                                {{if .IsAdmin}}
+                                    <li><a href="/dashboard"><i class="ion-ios-speedometer"></i>面板</a></li>
+                                {{end}}
+                                <li><a href="/logout"><i class="ion-log-out"></i>退出</a></li>
                             </ul>
                         </li>
                     {{else}}
@@ -133,10 +133,10 @@
                         <a href="link.html">友情链接</a>
                         <a href="about.html">关于我</a>
                     </div>
-                    <div class="sponsors">
-                        <div class="title">CDN 支持</div>
-                        <a href="https://www.upyun.com/"><img width="150" src=""/></a>
-                    </div>
+                    {{/*<div class="sponsors">*/}}
+                        {{/*<div class="title">CDN 支持</div>*/}}
+                        {{/*<a href="https://www.upyun.com/"><img width="150" src=""/></a>*/}}
+                    {{/*</div>*/}}
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ type IndexController struct {
  */
 func (c *IndexController) Index() {
 	c.Data["PageTitle"] = "首页"
+	c.Data["IsIndex"] = true
 	c.Layout = "home/public/layout.html"
 	c.TplName = "home/index.html"
 	c.LayoutSections = make(map[string]string)

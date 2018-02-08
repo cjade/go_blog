@@ -15,6 +15,7 @@ type Users struct {
 	Email     string      `orm:"size(50);unique"`                   //邮箱
 	Password  string      `orm:"size(32)"`                          //密码
 	Status    int8        `orm:"size(1)"`                           //状态 1正常
+	IsAdmin   int8        `orm:"size(1)"`                           //是否是管理员 1是
 	CreatedAt time.Time   `orm:"auto_now_add;type(datetime);index"` //创建时间
 	UpdatedAt time.Time   `orm:"auto_now;type(datetime)"`           //更新时间
 	Articles  []*Articles `orm:"reverse(many)"`                     //设置用户与文章一对多关系
@@ -24,21 +25,21 @@ type Users struct {
 func GetUserById(id int64) (u Users) {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Users))
-	qs.Filter("id", id).One(&u, "Id", "Email", "Password", "Status", "Name", "Avatar")
+	qs.Filter("id", id).One(&u, "Id", "Email", "Password", "Status", "Name", "Avatar", "IsAdmin")
 	return u
 }
 
 func GetUserByEmail(email string) (u Users) {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Users))
-	qs.Filter("email", email).One(&u, "Id", "Email", "Password", "Status", "Name", "Avatar")
+	qs.Filter("email", email).One(&u, "Id", "Email", "Password", "Status", "Name", "Avatar", "IsAdmin")
 	return u
 }
 
 func GetUserByName(name string) (u Users) {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Users))
-	qs.Filter("name", name).One(&u, "Id", "Email", "Password", "Status", "Name", "Avatar")
+	qs.Filter("name", name).One(&u, "Id", "Email", "Password", "Status", "Name", "Avatar", "IsAdmin")
 	return u
 }
 
