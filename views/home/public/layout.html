@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <!-- Scripts -->
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
 
 
 </head>
@@ -67,23 +69,18 @@
                     {{if .IsLogin}}
                         <li class="notification"><a href="https://pigjian.com/user/notification"><i
                                 class="ion-android-notifications"><span class="new"></span></i></a></li>
-                        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                            cJason
+                        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
+                            {{.UserName}}
                             <b class="caret"></b>&nbsp;&nbsp;
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAD/CAIAAACxapedAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC+0lEQVR4nO3WUY3DMBRFwc1qAQZKIBhCoATiEkgr9etFPTMIrqxjy9txrZ+nOvc1PeGGE/vUY0/sd3oAjFE/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XdtxrekNMGObHvCSa/lNzn1NT7jh50OX+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp2s7rjW9AWb8TQ9459zX9IQbT34vnNhH/HzoUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rp2o5rTW+AGd5+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRP1z8aNBd8IKUszQAAAABJRU5ErkJggg=="
+                            <img src="{{.UserAvatar}}" onerror='this.src = "https://i.loli.net/2018/02/07/5a7aae4a50e91.jpg"'
                                  class="avatar img-circle"></a>
-                            <ul role="menu" class="dropdown-menu text-center">
+                            <ul role="menu" class="dropdown-menu text-center" style="margin-top:0px !important;">
                                 <li><a href="https://pigjian.com/user/cJason"><i class="ion-person"></i>个人中心</a></li>
                                 <li><a href="https://pigjian.com/setting"><i class="ion-gear-b"></i>个人设置</a></li>
                                 <li class="divider"></li>
-                                <li><a href="https://pigjian.com/logout" onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();"><i
+                                <li><a href="/logout"><i
                                         class="ion-log-out"></i>退出
                                 </a>
-                                    <form id="logout-form" action="https://pigjian.com/logout" method="POST"
-                                          style="display: none;"><input type="hidden" name="_token"
-                                                                        value="hM8ckqdMX5xjjVREiBvscxB6yUBb1WE4tCHFv4ma">
-                                    </form>
                                 </li>
                             </ul>
                         </li>
@@ -138,7 +135,7 @@
                     </div>
                     <div class="sponsors">
                         <div class="title">CDN 支持</div>
-                        <a href="https://www.upyun.com/"><img width="150" src="storage/logo/upyun-white.png"/></a>
+                        <a href="https://www.upyun.com/"><img width="150" src=""/></a>
                     </div>
                 </div>
             </div>
@@ -154,9 +151,14 @@
 <script src="/static/home/js/home.js"></script>
 
 
+
 <script>
-    $(function () {
-        $("[data-toggle='tooltip']").tooltip();
+    $(".dropdown").mouseover(function () {
+            $(".dropdown").addClass("open")
+
+    });
+    $(".dropdown").mouseout(function(){
+        $(".dropdown").removeClass("open");
     });
 </script>
 

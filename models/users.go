@@ -10,7 +10,7 @@ import (
 
 type Users struct {
 	Id        int64
-	Name      string      `orm:"size(20)"`                          //昵称
+	Name      string      `orm:"size(20)";unique`                   //昵称
 	Avatar    string      `orm:"size(150)"`                         //头像
 	Email     string      `orm:"size(50);unique"`                   //邮箱
 	Password  string      `orm:"size(32)"`                          //密码
@@ -32,6 +32,13 @@ func GetUserByEmail(email string) (u Users) {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Users))
 	qs.Filter("email", email).One(&u, "Id", "Email", "Password", "Status", "Name", "Avatar")
+	return u
+}
+
+func GetUserByName(name string) (u Users) {
+	o := orm.NewOrm()
+	qs := o.QueryTable(new(Users))
+	qs.Filter("name", name).One(&u, "Id", "Email", "Password", "Status", "Name", "Avatar")
 	return u
 }
 
